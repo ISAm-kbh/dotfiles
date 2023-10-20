@@ -16,4 +16,17 @@ lspconfig['rust_analyzer'].setup({
 
 lspconfig['pyright'].setup({
     capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        python = {
+            analysis = {
+                autoImportCompletions = true,
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'basic',
+                pythonPath = '/usr/local/bin/python3',
+            },
+        },
+    },
 })
