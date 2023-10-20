@@ -56,6 +56,9 @@ call('plug#begin', PATH)
     Plug 'glepnir/lspsaga.nvim'
     Plug 'onsails/lspkind.nvim'
 
+    -- Linting
+    Plug 'mfussenegger/nvim-lint'
+
     -- Debugging
     Plug 'mfussenegger/nvim-dap'
     Plug 'rcarriga/nvim-dap-ui'
