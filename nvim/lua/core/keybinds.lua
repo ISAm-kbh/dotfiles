@@ -36,7 +36,7 @@ map("n", "<leader>bp", ":bp<CR>")
 map("n", "<leader>b", ":b")
 
 -- Nvim Lint
-map('n', '<leader>l', function() lint.try_lint() end)
+map('n', '<leader>l', function() require('lint').try_lint() end)
 
 -- Nvim DAP
 local dap = require('dap')
