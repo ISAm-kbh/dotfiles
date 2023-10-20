@@ -11,3 +11,7 @@ lspconfig['clangd'].setup({
 lspconfig['rust_analyzer'].setup({
     capabilities = capabilities,
 })
+
+lspconfig['pyright'].setup({
+    capabilities = capabilities,
+})

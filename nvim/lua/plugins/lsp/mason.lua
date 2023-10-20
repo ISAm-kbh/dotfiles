@@ -14,6 +14,7 @@ mason_lspconfig.setup({
         "clangd",
         "marksman",
         'rust_analyzer',
+        'pyright',
     }
 })
 
