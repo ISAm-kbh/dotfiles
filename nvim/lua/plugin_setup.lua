@@ -32,6 +32,9 @@ call('plug#begin', PATH)
     --Powerline style for tmux that coordinates with Neovim and syncs the Everforest theme
     Plug 'edkolev/tmuxline.vim'
 
+    -- Lazygit
+    Plug 'kdheepak/lazygit.nvim'
+
     -- Autopairs
     Plug 'windwp/nvim-autopairs'
 
