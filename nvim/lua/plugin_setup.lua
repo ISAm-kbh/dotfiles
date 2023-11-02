@@ -13,17 +13,26 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- Treesitter
-    'nvim-treesitter/nvim-treesitter',
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ":TSUpdate"
+    },
 
     -- Everforest theme
     'sainnhe/everforest',
 
     -- Powerline visual plugin for Neovim
     -- 'vim-airline/vim-airline',
-    'nvim-lualine/lualine.nvim',
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+    },
 
     -- File Tree
-    'nvim-tree/nvim-tree.lua',
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+    },
 
     -- Dev icons for Nvim-Tree
     'nvim-tree/nvim-web-devicons',
@@ -36,13 +45,19 @@ local plugins = {
     },
 
     -- Harpoon
-    'theprimeagen/harpoon',
+    {
+        'theprimeagen/harpoon',
+        dependencies = {'nvim-lua/plenary.nvim'},
+    },
 
     --Powerline style for tmux that coordinates with Neovim and syncs the Everforest theme
     'edkolev/tmuxline.vim',
 
     -- Lazygit
-    'kdheepak/lazygit.nvim',
+    {
+        'kdheepak/lazygit.nvim',
+        dependencies = {'nvim-lua/plenary.nvim'},
+    },
 
     -- Autopairs
     'windwp/nvim-autopairs',
@@ -65,7 +80,6 @@ local plugins = {
     'neovim/nvim-lspconfig',
     'glepnir/lspsaga.nvim',
     'hrsh7th/cmp-nvim-lsp',
-    'glepnir/lspsaga.nvim',
     'onsails/lspkind.nvim',
 
     -- Linting
@@ -73,7 +87,10 @@ local plugins = {
 
     -- Debugging
     'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = {'mfussenegger/nvim-dap'},
+    },
 }
 
 local opts = {}
