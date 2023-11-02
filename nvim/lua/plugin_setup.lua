@@ -1,69 +1,81 @@
-local call = vim.call
-local cmd = vim.cmd
-local Plug = vim.fn['plug#']
-local PATH = "~/.vim/autoload"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable',
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
-call('plug#begin', PATH)
-    -- Polyglot for syntax highlight
-    -- Plug 'sheerun/vim-polyglot'
+local plugins = {
     -- Treesitter
-    Plug 'nvim-treesitter/nvim-treesitter'
+    'nvim-treesitter/nvim-treesitter',
 
     -- Everforest theme
-    Plug 'sainnhe/everforest'
+    'sainnhe/everforest',
 
-    -- Powerline wisual plugin for Neovim
-    -- Plug 'vim-airline/vim-airline'
-    Plug 'nvim-lualine/lualine.nvim'
+    -- Powerline visual plugin for Neovim
+    -- 'vim-airline/vim-airline',
+    'nvim-lualine/lualine.nvim',
 
     -- File Tree
-    Plug 'nvim-tree/nvim-tree.lua'
+    'nvim-tree/nvim-tree.lua',
 
     -- Dev icons for Nvim-Tree
-    Plug 'nvim-tree/nvim-web-devicons'
+    'nvim-tree/nvim-web-devicons',
 
     -- Telescope fzf
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
+    {
+        'nvim-telescope/telescope.nvim', tag='0.1.4',
+        dependencies = {'nvim-lua/plenary.nvim'},
+
+    },
 
     -- Harpoon
-    Plug 'theprimeagen/harpoon'
+    'theprimeagen/harpoon',
 
     --Powerline style for tmux that coordinates with Neovim and syncs the Everforest theme
-    Plug 'edkolev/tmuxline.vim'
+    'edkolev/tmuxline.vim',
 
     -- Lazygit
-    Plug 'kdheepak/lazygit.nvim'
+    'kdheepak/lazygit.nvim',
 
     -- Autopairs
-    Plug 'windwp/nvim-autopairs'
+    'windwp/nvim-autopairs',
 
     -- Autocompletion
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
 
     -- Snippets
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'rafamadriz/friendly-snippets'
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'rafamadriz/friendly-snippets',
 
     -- Managing & installing LSP
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 
     -- configure LSP servers
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'onsails/lspkind.nvim'
+    'neovim/nvim-lspconfig',
+    'glepnir/lspsaga.nvim',
+    'hrsh7th/cmp-nvim-lsp',
+    'glepnir/lspsaga.nvim',
+    'onsails/lspkind.nvim',
 
     -- Linting
-    Plug 'mfussenegger/nvim-lint'
+    'mfussenegger/nvim-lint',
 
     -- Debugging
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'rcarriga/nvim-dap-ui'
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+}
 
-call 'plug#end'
+local opts = {}
+
+require('lazy').setup(plugins, opts)
