@@ -35,6 +35,8 @@ map("n", "<leader>bn", ":bn<CR>")
 map("n", "<leader>bp", ":bp<CR>")
 map("n", "<leader>b", ":b")
 
+-- Toggle Nvim Tree
+map('n', '<leader>tt', ':NvimTreeToggle<CR>')
 -- Nvim Lint
 map('n', '<leader>l', function() require('lint').try_lint() end)
 
