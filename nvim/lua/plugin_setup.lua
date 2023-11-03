@@ -18,8 +18,8 @@ local plugins = {
         build = ":TSUpdate"
     },
 
-    -- Everforest theme
-    'sainnhe/everforest',
+    -- Gruvbox theme
+    'sainnhe/gruvbox-material',
 
     -- Powerline visual plugin for Neovim
     -- 'vim-airline/vim-airline',
@@ -50,7 +50,7 @@ local plugins = {
         dependencies = {'nvim-lua/plenary.nvim'},
     },
 
-    --Powerline style for tmux that coordinates with Neovim and syncs the Everforest theme
+    --Powerline style for tmux that coordinates with Neovim and syncs the Gruvbox theme
     'edkolev/tmuxline.vim',
 
     -- Lazygit

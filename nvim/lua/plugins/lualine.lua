@@ -1,6 +1,6 @@
 require('lualine').setup {
     options = {
-        theme = 'everforest',
+        theme = 'gruvbox-material',
         globalstatus = true,
     },
     sections = {
