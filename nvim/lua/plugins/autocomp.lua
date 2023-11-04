@@ -15,6 +15,7 @@ local lspkind = require('lspkind')
 
 -- load friendly snippets
 require("luasnip/loaders/from_vscode").lazy_load()
+luasnip.filetype_extend('htmldjango', {'html'})
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
