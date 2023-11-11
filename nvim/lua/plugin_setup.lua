@@ -49,6 +49,12 @@ local plugins = {
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     },
 
+    -- Navigation between vim & tmux
+    {
+        'christoomey/vim-tmux-navigator',
+        lazy = false,
+    },
+
     -- Harpoon
     {
         'theprimeagen/harpoon',

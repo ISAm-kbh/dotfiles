@@ -35,6 +35,12 @@ map("n", "<leader>bn", ":bn<CR>")
 map("n", "<leader>bp", ":bp<CR>")
 map("n", "<leader>b", ":b")
 
+-- Nvim-Tmux Navigation
+map("n", "<C-h>", ":<C-U>TmuxNavigateLeft<cr>")
+map("n", "<C-l>", ":<C-U>TmuxNavigateRight<cr>")
+map("n", "<C-j>", ":<C-U>TmuxNavigateDown<cr>")
+map("n", "<C-k>", ":<C-U>TmuxNavigateUp<cr>")
+
 -- Toggle Nvim Tree
 map('n', '<leader>tt', ':NvimTreeToggle<CR>')
 -- Nvim Lint
