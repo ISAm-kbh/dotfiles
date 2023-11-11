@@ -55,9 +55,6 @@ local plugins = {
         dependencies = {'nvim-lua/plenary.nvim'},
     },
 
-    --Powerline style for tmux that coordinates with Neovim and syncs the Everforest theme
-    'edkolev/tmuxline.vim',
-
     -- Lazygit
     {
         'kdheepak/lazygit.nvim',
