@@ -46,7 +46,13 @@ local plugins = {
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        build = 'make',
+    },
+
+    -- Navigation between vim & tmux
+    {
+        'christoomey/vim-tmux-navigator',
+        lazy = false,
     },
 
     -- Harpoon
@@ -54,9 +60,6 @@ local plugins = {
         'theprimeagen/harpoon',
         dependencies = {'nvim-lua/plenary.nvim'},
     },
-
-    --Powerline style for tmux that coordinates with Neovim and syncs the Gruvbox theme
-    'edkolev/tmuxline.vim',
 
     -- Lazygit
     {
