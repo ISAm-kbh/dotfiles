@@ -2,6 +2,7 @@ local opt = vim.opt
 
 opt.showmode = false
 opt.number = true
+opt.relativenumber = true
 opt.tabstop = 4
 opt.expandtab = true
 opt.softtabstop = 4
