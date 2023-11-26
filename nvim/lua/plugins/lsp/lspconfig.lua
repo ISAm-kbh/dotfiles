@@ -30,3 +30,11 @@ lspconfig['pyright'].setup({
         },
     },
 })
+
+lspconfig['sourcekit'].setup({
+    capabilities = capabilities,
+    cmd = {
+        '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp',
+    },
+    single_file_support = 'true',
+})
