@@ -35,6 +35,9 @@ map("n", "<leader>bn", ":bn<CR>")
 map("n", "<leader>bp", ":bp<CR>")
 map("n", "<leader>b", ":b")
 
+-- View Code Action
+map('n', '<leader>ca', function() require('lspsaga').code_action() end)
+
 -- Toggle Nvim Tree
 map('n', '<leader>tt', ':NvimTreeToggle<CR>')
 -- Nvim Lint
