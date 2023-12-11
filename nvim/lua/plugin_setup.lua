@@ -86,7 +86,7 @@ local plugins = {
 
     -- configure LSP servers
     'neovim/nvim-lspconfig',
-    'glepnir/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     'hrsh7th/cmp-nvim-lsp',
     'onsails/lspkind.nvim',
 
