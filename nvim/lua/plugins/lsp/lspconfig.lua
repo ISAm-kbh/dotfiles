@@ -8,6 +8,10 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lspconfig['clangd'].setup({
     capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+    }
 })
 
 lspconfig['rust_analyzer'].setup({
