@@ -15,6 +15,7 @@ mason_lspconfig.setup({
         "marksman",
         'rust_analyzer',
         'pyright',
+        'intelephense',
     }
 })
 
