@@ -42,3 +42,7 @@ lspconfig['sourcekit'].setup({
     },
     --single_file_support = 'true',
 })
+
+lspconfig['intelephense'].setup({
+    capabilities = capabilities,
+})
