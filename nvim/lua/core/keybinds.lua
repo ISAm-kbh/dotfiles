@@ -42,6 +42,8 @@ map('n', '<leader>ca', function() require('lspsaga').code_action() end)
 map('n', '<leader>tt', ':NvimTreeToggle<CR>')
 -- Nvim Lint
 map('n', '<leader>l', function() require('lint').try_lint() end)
+-- Nvim Format
+map('n', '<leader>f', function() require('conform').format({ async = true}) end)
 
 -- Nvim DAP
 local dap = require('dap')

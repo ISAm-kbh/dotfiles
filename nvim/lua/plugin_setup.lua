@@ -93,6 +93,13 @@ local plugins = {
     -- Linting
     'mfussenegger/nvim-lint',
 
+    -- Formatting
+    {
+        'stevearc/conform.nvim',
+        event = { 'BufWritePre' },
+        cmd = { 'ConformInfo' },
+    },
+
     -- Debugging
     'mfussenegger/nvim-dap',
     {
