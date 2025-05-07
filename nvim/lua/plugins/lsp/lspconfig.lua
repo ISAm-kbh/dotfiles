@@ -38,7 +38,7 @@ lspconfig['pyright'].setup({
 lspconfig['sourcekit'].setup({
     capabilities = capabilities,
     cmd = {
-        '/opt/swift/usr/bin/sourcekit-lsp',
+        '/home/kai/.local/share/swiftly/bin/sourcekit-lsp',
     },
     --single_file_support = 'true',
 })
