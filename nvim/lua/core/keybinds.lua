@@ -30,10 +30,6 @@ map("v", "<leader>d", "\"_d")
 -- Replace all instances of current word
 map("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
--- Buffer Navigation
-map("n", "<leader>bn", ":bn<CR>")
-map("n", "<leader>bp", ":bp<CR>")
-map("n", "<leader>b", ":b")
 
 -- View Code Action
 map('n', '<leader>ca', function() require('lspsaga').code_action() end)
