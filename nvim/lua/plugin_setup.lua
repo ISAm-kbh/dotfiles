@@ -64,7 +64,9 @@ local plugins = {
     -- Lazygit
     {
         'kdheepak/lazygit.nvim',
-        dependencies = {'nvim-lua/plenary.nvim'},
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
     },
 
     -- Autopairs
