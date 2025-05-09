@@ -40,7 +40,7 @@ lspconfig['sourcekit'].setup({
     cmd = {
         '/home/kai/.local/share/swiftly/bin/sourcekit-lsp',
     },
-    --single_file_support = 'true',
+    single_file_support = 'true',
 })
 
 lspconfig['intelephense'].setup({
