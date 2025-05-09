@@ -30,6 +30,8 @@ map("v", "<leader>d", "\"_d")
 -- Replace all instances of current word
 map("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
+-- Pull up Lazygit
+map('n', '<leader>g', ':LazyGit<CR>')
 
 -- View Code Action
 map('n', '<leader>ca', function() require('lspsaga').code_action() end)
