@@ -103,6 +103,14 @@ local plugins = {
         cmd = { 'ConformInfo' },
     },
 
+    -- Blade Stuff
+    {
+        'tjdevries/php.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        }
+    },
+
     -- Debugging
     'mfussenegger/nvim-dap',
     'nvim-neotest/nvim-nio',
