@@ -58,6 +58,7 @@ local plugins = {
     -- Harpoon
     {
         'theprimeagen/harpoon',
+        branch = 'harpoon2',
         dependencies = {'nvim-lua/plenary.nvim'},
     },
 
@@ -100,6 +101,14 @@ local plugins = {
         'stevearc/conform.nvim',
         event = { 'BufWritePre' },
         cmd = { 'ConformInfo' },
+    },
+
+    -- Blade Stuff
+    {
+        'tjdevries/php.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        }
     },
 
     -- Debugging
