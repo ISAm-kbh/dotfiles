@@ -1,0 +1,192 @@
+source "$HOME/.config/sketchybar/icons.sh"
+source "$HOME/.config/sketchybar/colors.sh"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+##### Bar Appearance #####
+sketchybar --bar height=25        \
+                 blur_radius=30   \
+                 position=top     \
+                 sticky=off       \
+                 padding_left=10  \
+                 padding_right=10 \
+                 color=$NOCOLOR \
+                 shadow=on
+
+##### Global Defaults #####
+sketchybar --default \
+    background.color=$BG1 \
+    background.corner_radius=5 \
+    background.padding_right=5 \
+    background.height=16 \
+    background.border_color=0x66a9b665 \
+    background.border_width=0 \
+                     icon.font="SauceCodePro Nerd Font:Regular:14.0"  \
+                     icon.color=$FG0                \
+                     label.font="SauceCodePro Nerd Font:Regular:14.0" \
+                     label.color=$FG0                \
+                     padding_left=5                        \
+                     padding_right=5                       \
+                     label.padding_left=3                  \
+                     label.padding_right=8                 \
+                     icon.padding_left=8                   \
+                     icon.padding_right=3 \
+                     icon.highlight_color=$FGDIM \
+                     label.highlight_color=$FGDIM 
+
+##### Front App | Window Title #####
+sketchybar --add item front_app left                               \
+           --set front_app       script="$PLUGIN_DIR/front_app.sh" \
+                                 icon.color=$BG2 \
+                                 label.color=$BG2 \
+                                 background.color=$GREEN \
+                                 label.font.style="Bold" \
+           --subscribe front_app front_app_switched
+
+##### Yabai Mode and Yabai Float #####
+sketchybar -m --add item yabai_mode left \
+              --set yabai_mode update_freq=3 \
+                    yabai_mode script="$PLUGIN_DIR/yabai_mode.sh" \
+                    yabai_mode click_script="$PLUGIN_DIR/yabai_mode_click.sh" \
+              --subscribe yabai_mode space_change \
+              --set yabai_mode padding_left=0 \
+                               padding_right=0 \
+                               label.drawing=off \
+                               icon.padding_right=4 \
+                               icon.color=$BG2 \
+                               label.color=$BG2 \
+                               background.drawing=off
+
+sketchybar -m --add item yabai_float left \
+              --add event window_focus \
+              --add event float_change \
+              --set yabai_float script="$PLUGIN_DIR/yabai_float.sh" \
+                                click_script="$PLUGIN_DIR/yabai_float_click.sh" \
+                                lazy=off \
+              --subscribe yabai_float front_app_switched window_focus float_change \
+              --set yabai_float padding_left=0 \
+                                padding_right=0 \
+                                label.drawing=off \
+                                icon.padding_left=4 \
+                                icon.padding_right=8 \
+                                icon.color=$BG2 \
+                                label.color=$BG2 \
+                                background.drawing=off
+
+sketchybar --add item separator left \
+    --set separator icon.drawing=off \
+        label.drawing=off \
+        background.drawing=off \
+        padding_right=0
+
+sketchybar --add item separator1 left \
+    --set separator1 icon.drawing=off \
+        label.drawing=off \
+        background.drawing=off \
+        padding_right=0
+
+##### Mission Control Space Indicators #####
+SPACE_ICONS=($DOTSMALL $DOTSMALL $DOTSMALL $DOTSMALL $DOTSMALL )
+
+for i in "${!SPACE_ICONS[@]}"
+do
+  sid=$(($i+1))
+  sketchybar --add space space.$sid left                                 \
+             --set space.$sid associated_space=$sid                      \
+                              icon=${SPACE_ICONS[i]}                     \
+                              icon.padding_left=3 \
+                              icon.padding_right=3 \
+                              background.border_color=$SPACEBORDER \
+                              background.border_width=2 \
+                              background.color=$FG0                \
+                              background.corner_radius=6                 \
+                              background.height=14                       \
+                              background.drawing=off                     \
+                              label.drawing=off                          \
+                              script="$PLUGIN_DIR/space.sh"              \
+                              click_script="yabai -m space --focus $sid" 
+done
+
+##### Left Brackets #####
+sketchybar -m --add bracket left_blur yabai_float '/space\..*/' \
+    --set left_blur background.color=$BG0 \
+        background.corner_radius=7
+
+sketchybar -m --add bracket left_components front_app yabai_mode yabai_float separator \
+    --set left_components background.color=$BG2 \
+        background.height=20 \
+        background.corner_radius=7
+
+sketchybar -m --add bracket yabai_stuff yabai_mode yabai_float \
+    --set yabai_stuff background.color=$AQUA
+
+##### Music Indicator #####
+sketchybar --add event song_update com.apple.iTunes.playerInfo
+
+sketchybar --add item music center \
+           --set music script="$PLUGIN_DIR/music.sh" \
+                       drawing=off \
+                       background.drawing=off \
+           --subscribe music song_update
+
+##### Time #####
+sketchybar --add item clock right                              \
+           --set clock   update_freq=10                        \
+                         padding_left=0 \
+                         icon=$CLOCKICO                      \
+                         icon.color=$BG2 \
+                         label.color=$BG2 \
+                         label.font.style="Bold" \
+                         background.color=$ORANGE \
+                         script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item calendar right \
+    --set calendar update_freq=30 \
+        padding_left=0 \
+        icon=$CALENDARICO \
+        icon.color=$BG2 \
+        label.color=$BG2 \
+        label.font.style="Bold" \
+        background.color=$BLUE \
+        script="$PLUGIN_DIR/calendar.sh"
+
+##### Battery Indicator #####
+sketchybar --add item battery right                            \
+           --set battery script="$PLUGIN_DIR/battery.sh"       \
+                         update_freq=120                       \
+                         padding_left=0 \
+                         icon.color=$BG2 \
+                         label.color=$BG2 \
+                         background.color=$YELLOW \
+           --subscribe battery system_woke power_source_change
+
+##### Wifi Indicator #####
+sketchybar --add item wifi right                               \
+           --set wifi    script="$PLUGIN_DIR/wifi.sh"          \
+                         label.drawing=off                     \
+                         icon.padding_right=8 \
+                         icon.color=$BG2 \
+                         background.color=$RED \
+           --subscribe wifi wifi_change 
+
+##### Volume Mute Indicator #####
+sketchybar --add item volume right                             \
+           --set volume  script="$PLUGIN_DIR/volume.sh"        \
+                         padding_right=0 \
+                         icon.padding_right=8 \
+                         icon.color=$BG2 \
+                         background.color=$PURPLE \
+           --subscribe volume volume_change
+
+##### Right Brackets #####
+sketchybar --add bracket right_components clock calendar battery wifi volume \
+    --set right_components background.color=$BG2 \
+        background.height=20 \
+        background.corner_radius=7
+
+
+##### Finalizing Setup #####
+# The below command is only needed at the end of the initial configuration to
+# force all scripts to run the first time, it should never be run in an item script.
+
+sketchybar --update
