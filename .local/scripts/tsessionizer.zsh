@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
-CONFIG_FILE="$CONFIG_DIR/tmux-sessionizer.conf"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tsessionizer"
+CONFIG_FILE="$CONFIG_DIR/tsessionizer.conf"
 
 # Variables derived from config file:
 # 1. TS_SEARCH_PATHS
@@ -24,11 +24,6 @@ fi
 dep_check() {
     if ! command -v tmux &> /dev/null; then
         echo "tmux is not installed"
-        exit 1
-    fi
-
-    if ! command -v find &> /dev/null; then
-        echo 'i cant find find cus im a doofus'
         exit 1
     fi
 
@@ -59,10 +54,10 @@ has_session() {
 # 1 - session name
 # 2 - session directory
 setup_session() {
-    if [[ -f "$2/.tmux-ses" ]]; then
-        tmux send-keys -t $1 "source $2/.tmux-ses" Enter
+    if [[ -f "$2/.tsess" ]]; then
+        tmux send-keys -t $1 "source $2/.tsess" Enter
     elif [[ -f "$HOME/.tmux-ses" ]]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-ses" Enter
+        tmux send-keys -t $1 "source $HOME/.tsess" Enter
     fi
 }
 
