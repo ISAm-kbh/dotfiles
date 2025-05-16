@@ -60,9 +60,9 @@ has_session() {
 # 2 - session directory
 setup_session() {
     if [[ -f "$2/.tmux-ses" ]]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" Enter
+        tmux send-keys -t $1 "source $2/.tmux-ses" Enter
     elif [[ -f "$HOME/.tmux-ses" ]]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" Enter
+        tmux send-keys -t $1 "source $HOME/.tmux-ses" Enter
     fi
 }
 
