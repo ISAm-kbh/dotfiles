@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "$(pwd)" == $HOME || "$(pwd)" == $HOME/Documents/ ]]; then
+    clear
+    return
+fi
+tmux new-window -d
+nvim
