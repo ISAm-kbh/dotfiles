@@ -56,7 +56,7 @@ has_session() {
 setup_session() {
     if [[ -f "$2/.tsess" ]]; then
         tmux send-keys -t $1 "source $2/.tsess" Enter
-    elif [[ -f "$HOME/.tmux-ses" ]]; then
+    elif [[ -f "$HOME/.tsess" ]]; then
         tmux send-keys -t $1 "source $HOME/.tsess" Enter
     fi
 }
